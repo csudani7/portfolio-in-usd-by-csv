@@ -1,30 +1,49 @@
-## Question 1 - Programming
-_We're looking at your programming ability. It must not only work, it should be maintainable._
+# Portfolio managment by Chintan Sudani
 
-Let us assume you are a crypto investor. You have made transactions over a period of time which is logged in a CSV file at the [data directory](https://raw.githubusercontent.com/Propine/2b-boilerplate/master/data/transactions.csv). Write a command line program that returns the latest portfolio value per token in USD
+## Project Description
 
-The program should be ran like this
+This project is about get portfolio from transaction csv file.
 
-```
-npm run start
-```
+## Table of Contents
 
-On running, it should return the latest portfolio value per token in USD
+- [Installation](#installation)
+- [Outcome](#outcome)
+- [Assumption](#assumption)
+- [Usages](#usages)
 
-The CSV file has the following columns
- - timestamp: Integer number of seconds since the Epoch
- - transaction_type: Either a DEPOSIT or a WITHDRAWAL
- - token: The token symbol
- - amount: The amount transacted
+## Installation
 
-Portfolio means the balance of the token where you need to add deposits and subtract withdrawals. You may obtain the exchange rates from [cryptocompare](https://min-api.cryptocompare.com/documentation) where the API is free. You should write it in Node.js as our main stack is in Javascript/Typescript and we need to assess your proficiency.
+Step 1) Clone this project (https://github.com/csudani7/propine-assignment-by-chintan-sudani)
+Step 2) Install node_modules using `npm install`
+Step 3) Create .env file as per .env.example and paste your cryptocompare API key
+Step 4) Run project using `npm run start`
 
+## Outcome
 
-## Submission
+following Outcome is based on timestamp:
 
-Please take no more than 2 hours to finish. We do not track time, hence you can start and end at your own time. Your answers should comprise of the following
+    ```md
+    ![alt text](portfolio.png)
+    ```
 
-  - Source code that you used for deriving the results
-  - README that explains various design decisions that you took.
+Outcome Entity:
+- quantity : How much Quantity you have?
+- invested_usd_price : How much you invested as per USD?
+- current_usd_price : How much you earned/loss as per current USD Price?
 
-Commit your answers in a private Github repository(it's free), please do not fork as other candidates will see your answers. Add Zan(liangzan), Ben(BenPropine) as collaborators then inform us that it is done at zan@propine.com, ben.nguyen@propine.com.
+Note: Above list is derived based on token
+
+## Assumption
+
+1) Cryptocompare have API Limit so, transaction data is trucated by first 50 transaction
+2) Cryptocompare API params doesn't have date range, hence we can not reduce compilation time
+3) Used csv-parse to parse CSV file
+4) Used green/red Color to show portfolio value based on P&L
+
+## Usages
+
+1) API
+  - endpoint: `/pricehistorical?fsym=${fsym}&tsyms=${tsyms}&ts=${time}`
+    - fysm : Used Crypto (required)
+    - tsyms : Conversion currency (required)
+    - ts : required time to fetch price (required)

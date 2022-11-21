@@ -20,11 +20,7 @@ Step 4) Run project using `npm run start`
 
 ## Outcome
 
-following Outcome is based on timestamp:
-
-    ```md
-    ![alt text](portfolio.png)
-    ```
+- check `portfolio.png` to know outcome of project
 
 Outcome Entity:
 - quantity : How much Quantity you have?
